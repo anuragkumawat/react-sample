@@ -24,17 +24,11 @@ public class ReactSampleController {
 		fooList.add(new Foo(2, "Test3"));
 		fooList.add(new Foo(2, "Test4"));
 		fooList.add(new Foo(2, "Test5"));
-		fooList.add(new Foo(2, "Test6"));
-		fooList.add(new Foo(2, "Test7"));
-		fooList.add(new Foo(2, "Test8"));
-		fooList.add(new Foo(2, "Test9"));
-		fooList.add(new Foo(2, "Test10"));
 
 	}
 
 	@GetMapping(value = "/load", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public Flux<Foo> getSpeech() {
-
-		return Flux.fromIterable(fooList).delayElements(Duration.ofSeconds(1)).repeat().log();
+		return Flux.fromIterable(fooList).delayElements(Duration.ofSeconds(1)).log();
 	}
 }
